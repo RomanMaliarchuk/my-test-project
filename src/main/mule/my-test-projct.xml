@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7f2df642-cbf9-4ad5-952c-3722dfd423c6" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="my-test-projctFlow" doc:id="8929521c-f3fe-4aff-a370-a7a2e55e8380" >
+		<http:listener doc:name="Listener" doc:id="388231d5-591d-4677-ac64-694dba04d260" config-ref="HTTP_Listener_config" path="/health"/>
+		<logger level="INFO" doc:name="Logger" doc:id="a93ed2fc-98af-478f-9789-edf1b7c85248" message="Hello Mule"/>
+		<set-payload value="Hello Mule!" doc:name="Set Payload" doc:id="71df4146-716e-43cd-bcf1-e96c9e490baa" />
+	</flow>
+</mule>
